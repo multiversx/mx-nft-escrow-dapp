@@ -7,7 +7,13 @@
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "config:devnet": "cp ./src/config/config.devnet.ts ./src/config/index.ts",
+    "config:mainnet": "cp ./src/config/config.mainnet.ts ./src/config/index.ts",
+    "start:devnet": "yarn config:devnet && yarn start",
+    "start:mainnet": "yarn config:mainnet && yarn start",
+    "build:devnet": "yarn config:devnet && yarn build",
+    "build:mainnet": "yarn config:mainnet && yarn build"
   },
   "dependencies": {
     "@multiversx/sdk-core": "12.9.0",
@@ -27,6 +33,6 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-node-polyfills": "^0.15.0"
+    "vite-plugin-node-polyfills": "^0.15.0",
   }
 }
