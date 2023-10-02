@@ -11,10 +11,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@multiversx/sdk-core": "12.9.0",
-    "@multiversx/sdk-dapp": "2.21.0",
-    "@multiversx/sdk-network-providers": "2.0.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
