@@ -1,6 +1,6 @@
 import './App.css'
 import {DappProvider} from "@multiversx/sdk-dapp/wrappers";
-import {ENVIRONMENT} from "./config";
+import {ENVIRONMENT} from "config";
 
 function App() {
 
