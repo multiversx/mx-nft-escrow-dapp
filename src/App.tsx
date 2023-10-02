@@ -1,12 +1,20 @@
 import './App.css'
 import {DappProvider} from "@multiversx/sdk-dapp/wrappers";
 import {ENVIRONMENT} from "config";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import {HomePage} from "pages/HomePage";
+import {UnlockPage} from "pages/UnlockPage";
 
 function App() {
 
   return (
       <DappProvider environment={ENVIRONMENT}>
-        Demo dApp
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/unlock" element={<UnlockPage />} />
+            </Routes>
+        </Router>
       </DappProvider>
   )
 }

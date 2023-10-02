@@ -12,4 +12,18 @@ export default defineConfig({
     }),
     tsconfigPaths()
   ],
+  server: {
+    port: Number(process.env.PORT) || 3000,
+    strictPort: true,
+    host: true,
+  },
+  build: {
+    outDir: 'build'
+  },
+  preview: {
+    port: 3002,
+    https: true,
+    host: 'localhost',
+    strictPort: true
+  }
 })
