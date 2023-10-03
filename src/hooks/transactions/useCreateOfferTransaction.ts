@@ -1,17 +1,18 @@
+import {useGetAccountInfo} from "@multiversx/sdk-dapp/hooks/account/useGetAccountInfo";
 import {getChainID} from "@multiversx/sdk-dapp/utils";
 import {Address, TokenTransfer} from "@multiversx/sdk-core";
 import {smartContract} from "utils/smartContract";
 
 export const useCreateOfferTransaction = () => {
+    const {account} = useGetAccountInfo();
 
     const getCreateOfferTransaction = ({
-        address,
         collectionId,
         nonce,
         wantedCollectionId,
         wantedNonce,
         wantedAddress
-    }: {address: string; collectionId: string, nonce: number, wantedCollectionId: string, wantedNonce: number, wantedAddress: string}) => {
+    }: {collectionId: string, nonce: number, wantedCollectionId: string, wantedNonce: number, wantedAddress: string}) => {
         return smartContract.methods
             .escrow([wantedCollectionId, wantedNonce, wantedAddress])
             .withSingleESDTNFTTransfer(
@@ -19,7 +20,7 @@ export const useCreateOfferTransaction = () => {
             )
             .withGasLimit(10000000)
             .withChainID(getChainID())
-            .withSender(Address.fromString(address))
+            .withSender(Address.fromString(account.address))
             .buildTransaction()
             .toPlainObject()
     }

@@ -17,7 +17,7 @@ function App() {
             }}
         >
             <Router>
-                <TransactionsToastList />
+                <TransactionsToastList  />
                 <NotificationModal />
                 <SignTransactionsModals />
                 <Routes>

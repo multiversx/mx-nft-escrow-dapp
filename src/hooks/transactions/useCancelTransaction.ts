@@ -1,7 +1,10 @@
+import { useGetAccountInfo } from "@multiversx/sdk-dapp/hooks/account/useGetAccountInfo";
 import {getChainID} from "@multiversx/sdk-dapp/utils";
 import {smartContract} from "utils/smartContract.ts";
+import {Address} from "@multiversx/sdk-core";
 
 export const useConfirmTransaction = () => {
+    const {account} = useGetAccountInfo();
 
     const getCancelTransaction = ({
         offerId
@@ -10,6 +13,7 @@ export const useConfirmTransaction = () => {
             .cancel([offerId])
             .withGasLimit(10000000)
             .withChainID(getChainID())
+            .withSender(Address.fromString(account.address))
             .buildTransaction()
             .toPlainObject()
     }

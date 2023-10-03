@@ -4,7 +4,6 @@ import {
     useCreateOfferTransaction,
 } from "hooks/transactions/useCreateOfferTransaction";
 import {sendTransactions} from "@multiversx/sdk-dapp/services";
-import {useGetAccountInfo} from "@multiversx/sdk-dapp/hooks";
 
 export type CreateOfferValuesType = {
     collectionId: string;
@@ -21,7 +20,6 @@ type CreateOfferSchemaObject = {
 };
 
 export const useCreateOfferForm = () => {
-    const {account} = useGetAccountInfo();
     const {getCreateOfferTransaction} = useCreateOfferTransaction();
 
     const initialValues: CreateOfferValuesType = {
@@ -45,7 +43,6 @@ export const useCreateOfferForm = () => {
             console.log(values);
 
             const tx = getCreateOfferTransaction({
-                address: account.address,
                 collectionId: values.collectionId,
                 nonce: values.collectionNonce,
                 wantedCollectionId: values.wantedCollectionId,
