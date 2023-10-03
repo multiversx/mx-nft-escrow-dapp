@@ -19,9 +19,11 @@
     "@multiversx/sdk-core": "12.9.0",
     "@multiversx/sdk-dapp": "2.21.1",
     "@multiversx/sdk-network-providers": "2.0.0",
+    "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "yup": "^1.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
