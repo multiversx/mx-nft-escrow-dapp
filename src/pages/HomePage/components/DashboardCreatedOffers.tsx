@@ -1,5 +1,5 @@
-import {useCreatedOffers} from "hooks/queries/useCreatedOffers.ts";
-import {DashboardCreateOffer} from "./DashboardCreateOffer/DashboardCreateOffer.tsx";
+import {useCreatedOffers} from "hooks/queries/useCreatedOffers";
+import {DashboardCreateOffer} from "./DashboardCreateOffer/DashboardCreateOffer";
 
 export const DashboardCreatedOffers = () => {
     const {createdOffers}  = useCreatedOffers();

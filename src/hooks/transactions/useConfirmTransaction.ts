@@ -1,6 +1,6 @@
 import {getChainID} from "@multiversx/sdk-dapp/utils";
 import {Address, TokenTransfer} from "@multiversx/sdk-core";
-import {smartContract} from "utils/smartContract.ts";
+import {smartContract} from "utils/smartContract";
 import { useGetAccountInfo } from "@multiversx/sdk-dapp/hooks/account/useGetAccountInfo";
 
 export const useConfirmTransaction = () => {

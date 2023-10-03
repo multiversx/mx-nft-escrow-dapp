@@ -1,33 +1,16 @@
 import {useCallback, useEffect, useState} from "react";
-import {ProxyNetworkProvider} from "@multiversx/sdk-network-providers";
-import {Address, ResultsParser} from "@multiversx/sdk-core";
-import {useGetAccountInfo} from "@multiversx/sdk-dapp/hooks";
-import {smartContract} from "utils/smartContract.ts";
 import BigNumber from "bignumber.js";
+import {ProxyNetworkProvider} from "@multiversx/sdk-network-providers";
+import {ResultsParser} from "@multiversx/sdk-core";
+import {useGetAccountInfo} from "@multiversx/sdk-dapp/hooks";
+import {OfferType} from "types/offer";
+import {OfferResponseType} from "types/offerResponse";
+import {smartContract} from "utils/smartContract";
 import {API_URL} from "config";
-
-type OfferResponseType = {
-    creator: Address;
-    nft: string;
-    nonce: BigNumber;
-    wanted_address: Address;
-    wanted_nft: string;
-    wanted_nonce: BigNumber;
-}
-
-export type CreatedOfferType = {
-    offerId: number;
-    creator: string;
-    nftCollection: string;
-    nftNonce: number;
-    wantedAddress: string;
-    wantedNftCollection: string;
-    wantedNftNonce: number;
-}
 
 export const useCreatedOffers = () => {
     const {account} = useGetAccountInfo();
-    const [createdOffers, setCreatedOffers] = useState<CreatedOfferType[]>([]);
+    const [createdOffers, setCreatedOffers] = useState<OfferType[]>([]);
 
     const getCreatedOffers = useCallback(async () => {
         const networkProvider = new ProxyNetworkProvider(API_URL);
@@ -47,7 +30,7 @@ export const useCreatedOffers = () => {
                     wantedAddress: offerPair[1].wanted_address.valueOf().toString(),
                     wantedNftCollection: offerPair[1].wanted_nft.valueOf(),
                     wantedNftNonce: offerPair[1].wanted_nonce.toNumber()
-                } as CreatedOfferType
+                } as OfferType
             });
 
             setCreatedOffers(offers);

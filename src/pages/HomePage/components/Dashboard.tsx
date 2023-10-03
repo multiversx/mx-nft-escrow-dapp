@@ -1,7 +1,7 @@
 import {logout} from "@multiversx/sdk-dapp/utils";
-import {DashboardBalance} from "./DashboardBalance.tsx";
-import {DashboardCreatedOffers} from "./DashboardCreatedOffers.tsx";
-import {DashboardWantedOffers} from "./DashboardWantedOffers.tsx";
+import {DashboardBalance} from "./DashboardBalance";
+import {DashboardCreatedOffers} from "./DashboardCreatedOffers";
+import {DashboardWantedOffers} from "./DashboardWantedOffers";
 
 export const Dashboard = () => {
     return (

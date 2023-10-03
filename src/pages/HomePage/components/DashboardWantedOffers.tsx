@@ -1,4 +1,4 @@
-import {useWantedOffers} from "hooks/queries/useWantedOffers.ts";
+import {useWantedOffers} from "hooks/queries/useWantedOffers";
 
 export const DashboardWantedOffers = () => {
     const {wantedOffers}  = useWantedOffers();
