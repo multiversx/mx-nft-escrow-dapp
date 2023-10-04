@@ -1,8 +1,8 @@
 import {Formik} from "formik";
-import {useCreateOfferForm} from "../../hooks/useCreateOfferForm";
-import {DashboardCreateOfferForm} from "./DashboardCreateOfferForm";
+import {useCreateOfferForm} from "../hooks/useCreateOfferForm";
+import {CreateOfferForm} from "./CreateOfferForm";
 
-export const DashboardCreateOffer = () => {
+export const CreateOfferFormik = () => {
     const {initialValues, validationSchema, onSubmit} = useCreateOfferForm();
 
     return (
@@ -13,7 +13,7 @@ export const DashboardCreateOffer = () => {
             validateOnChange={false}
             onSubmit={onSubmit}
         >
-            <DashboardCreateOfferForm />
+            <CreateOfferForm />
         </Formik>
     )
 }

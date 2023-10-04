@@ -1,9 +1,7 @@
 import * as Yup from "yup";
 import {useCallback} from "react";
-import {
-    useCreateOfferTransaction,
-} from "hooks/transactions/useCreateOfferTransaction";
-import {sendTransactions} from "@multiversx/sdk-dapp/services";
+import {useCreateOfferTransaction} from "hooks/transactions/useCreateOfferTransaction.ts";
+import {sendTransactions} from "@multiversx/sdk-dapp/services/transactions/sendTransactions";
 
 export type CreateOfferValuesType = {
     collectionId: string;

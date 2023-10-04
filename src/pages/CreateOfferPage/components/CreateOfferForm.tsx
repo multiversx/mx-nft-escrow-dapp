@@ -1,11 +1,12 @@
 import {ErrorMessage, Field, Form, useFormikContext} from "formik";
-import {CreateOfferValuesType} from "../../hooks/useCreateOfferForm";
+import {CreateOfferValuesType} from "../hooks/useCreateOfferForm.ts";
 
-export const DashboardCreateOfferForm = () => {
+export const CreateOfferForm = () => {
     const { errors } = useFormikContext<CreateOfferValuesType>();
 
     return (
         <Form>
+
             <div>Your NFT:</div>
             <div>
                 <label>NFT Collection</label>
@@ -82,7 +83,7 @@ export const DashboardCreateOfferForm = () => {
                 type="submit"
                 disabled={Object.entries(errors).length > 0}
             >
-                <span>Submit</span>
+                Submit
             </button>
         </Form>
     )

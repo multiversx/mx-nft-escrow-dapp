@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {HomePage} from "pages/HomePage/HomePage";
 import {UnlockPage} from "pages/UnlockPage/UnlockPage";
 import {NotificationModal, SignTransactionsModals, TransactionsToastList} from "@multiversx/sdk-dapp/UI";
+import {CreateOfferPage} from "./pages/CreateOfferPage/CreateOfferPage.tsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/unlock" element={<UnlockPage />} />
+                    <Route path="/create" element={<CreateOfferPage />} />
                 </Routes>
             </Router>
         </DappProvider>
