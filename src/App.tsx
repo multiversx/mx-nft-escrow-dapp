@@ -27,6 +27,7 @@ function App() {
                 <div style={{
                     width: "100%",
                     minWidth: "100%",
+                    padding: "2rem"
                 }}>
                     <Routes>
                         <Route path="/" element={<HomePage />} />

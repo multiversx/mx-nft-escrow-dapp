@@ -4,9 +4,32 @@ export const DashboardWantedOffers = () => {
     const {wantedOffers}  = useWantedOffers();
 
     return (
-        <div>
-            <h2>Wanted Offers</h2>
-            <code> {JSON.stringify(wantedOffers)} </code>
+        <div className="card" style={{display: "flex", justifyContent: "center", flexDirection: "column", marginTop: "3rem"}}>
+            <h2><b>Desired Offers</b></h2>
+            <div className="container" style={{display: "flex"}}>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Offer ID</th>
+                        <th>My NFT</th>
+                        <th>Desired NFT</th>
+                        <th>From</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {wantedOffers.map((offer) => (
+                        <tr key={offer.offerId}>
+                            <td>{offer.offerId}</td>
+                            <td>{`${offer.nftCollection}-${offer.nftNonce}`}</td>
+                            <td>{`${offer.wantedNftCollection}-${offer.wantedNftNonce}`}</td>
+                            <td>{offer.wantedAddress}</td>
+                            <td><button>Accept</button></td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

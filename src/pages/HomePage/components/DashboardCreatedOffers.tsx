@@ -23,6 +23,7 @@ export const DashboardCreatedOffers = () => {
                         <th>My NFT</th>
                         <th>Desired NFT</th>
                         <th>From</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,7 @@ export const DashboardCreatedOffers = () => {
                             <td>{`${offer.nftCollection}-${offer.nftNonce}`}</td>
                             <td>{`${offer.wantedNftCollection}-${offer.wantedNftNonce}`}</td>
                             <td>{offer.wantedAddress}</td>
+                            <td><button>Cancel</button></td>
                         </tr>
                     ))}
                     </tbody>

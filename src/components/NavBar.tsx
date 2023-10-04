@@ -7,7 +7,7 @@ export const NavBar = () => {
     const navigate = useNavigate();
 
     return (
-        <ul style={{width: "100vw", marginLeft: "-35px"}}>
+        <ul style={{width: "100vw"}}>
             <li><Link className="active" to="/">Home</Link></li>
             <li><Link to="/unlock">Unlock</Link></li>
             <li><Link to="/create">Create</Link></li>
