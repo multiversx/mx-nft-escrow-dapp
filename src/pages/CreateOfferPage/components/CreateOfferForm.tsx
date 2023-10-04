@@ -36,7 +36,7 @@ export const CreateOfferForm = () => {
                     />
                 </div>
 
-                <h4><b>Desired NFT:</b></h4>
+                <h4><b>Wanted NFT:</b></h4>
                 <div>
                     <label>NFT Collection</label>
                     <Field

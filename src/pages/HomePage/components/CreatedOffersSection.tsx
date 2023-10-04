@@ -1,7 +1,7 @@
 import {useCreatedOffers} from "hooks/queries/useCreatedOffers";
 import {useNavigate} from "react-router-dom";
 
-export const DashboardCreatedOffers = () => {
+export const CreatedOffersSection = () => {
     const {createdOffers}  = useCreatedOffers();
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ export const DashboardCreatedOffers = () => {
                     <tr>
                         <th>Offer ID</th>
                         <th>My NFT</th>
-                        <th>Desired NFT</th>
+                        <th>Wanted NFT</th>
                         <th>From</th>
                         <th>Actions</th>
                     </tr>
