@@ -2,8 +2,9 @@ import { useGetAccountInfo } from "@multiversx/sdk-dapp/hooks/account/useGetAcco
 import {getChainID} from "@multiversx/sdk-dapp/utils";
 import {smartContract} from "utils/smartContract";
 import {Address} from "@multiversx/sdk-core";
+import {sendTransactions} from "@multiversx/sdk-dapp/services/transactions/sendTransactions";
 
-export const useConfirmTransaction = () => {
+export const useCancelTransaction = () => {
     const {account} = useGetAccountInfo();
 
     const getCancelTransaction = ({
@@ -18,7 +19,22 @@ export const useConfirmTransaction = () => {
             .toPlainObject()
     }
 
+    const onCancelOffer = async (offerId: number) => {
+        const cancelTransaction = getCancelTransaction({offerId});
+
+        await sendTransactions({
+            transactions: cancelTransaction,
+            transactionsDisplayInfo: {
+                processingMessage: 'Processing Cancel transaction',
+                errorMessage: 'An error has occurred during Cancel',
+                successMessage: 'Cancel transaction successful'
+            },
+            redirectAfterSign: false
+        });
+    }
+
     return {
-        getCancelTransaction
+        getCancelTransaction,
+        onCancelOffer
     }
 }

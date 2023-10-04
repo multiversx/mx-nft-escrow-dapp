@@ -1,8 +1,10 @@
 import {useCreatedOffers} from "hooks/queries/useCreatedOffers";
 import {useNavigate} from "react-router-dom";
+import {useCancelTransaction} from "hooks/transactions/useCancelTransaction.ts";
 
 export const CreatedOffersSection = () => {
     const {createdOffers}  = useCreatedOffers();
+    const {onCancelOffer} = useCancelTransaction();
     const navigate = useNavigate();
 
     return (
@@ -33,7 +35,7 @@ export const CreatedOffersSection = () => {
                             <td>{`${offer.nftCollection}-${offer.nftNonce}`}</td>
                             <td>{`${offer.wantedNftCollection}-${offer.wantedNftNonce}`}</td>
                             <td>{offer.wantedAddress}</td>
-                            <td><button>Cancel</button></td>
+                            <td><button onClick={() => onCancelOffer(offer.offerId)}>Cancel</button></td>
                         </tr>
                     ))}
                     </tbody>
