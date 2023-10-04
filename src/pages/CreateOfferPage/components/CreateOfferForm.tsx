@@ -1,5 +1,5 @@
 import {ErrorMessage, Field, Form, useFormikContext} from "formik";
-import {CreateOfferValuesType} from "../hooks/useCreateOfferForm.ts";
+import {CreateOfferValuesType} from "../hooks/useCreateOfferForm";
 
 export const CreateOfferForm = () => {
     const { errors } = useFormikContext<CreateOfferValuesType>();

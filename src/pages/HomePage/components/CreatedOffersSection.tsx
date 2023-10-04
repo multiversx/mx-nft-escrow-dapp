@@ -1,6 +1,6 @@
 import {useCreatedOffers} from "hooks/queries/useCreatedOffers";
 import {useNavigate} from "react-router-dom";
-import {useCancelTransaction} from "hooks/transactions/useCancelTransaction.ts";
+import {useCancelTransaction} from "hooks/transactions/useCancelTransaction";
 
 export const CreatedOffersSection = () => {
     const {createdOffers}  = useCreatedOffers();

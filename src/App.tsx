@@ -1,12 +1,16 @@
 import './App.css'
 import {DappProvider} from "@multiversx/sdk-dapp/wrappers";
-import {ENVIRONMENT, walletConnectV2ProjectId} from "config";
+import {
+    NotificationModal,
+    SignTransactionsModals,
+    TransactionsToastList
+} from "@multiversx/sdk-dapp/UI";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import {HomePage} from "pages/HomePage/HomePage";
 import {UnlockPage} from "pages/UnlockPage/UnlockPage";
-import {NotificationModal, SignTransactionsModals, TransactionsToastList} from "@multiversx/sdk-dapp/UI";
-import {CreateOfferPage} from "./pages/CreateOfferPage/CreateOfferPage.tsx";
-import {NavBar} from "./components/NavBar.tsx";
+import {CreateOfferPage} from "pages/CreateOfferPage/CreateOfferPage";
+import {NavBar} from "components/NavBar";
+import {ENVIRONMENT, walletConnectV2ProjectId} from "config";
 
 function App() {
 

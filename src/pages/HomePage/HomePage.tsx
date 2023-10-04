@@ -1,7 +1,7 @@
 import {useGetIsLoggedIn} from "@multiversx/sdk-dapp/hooks";
-import {BalanceSection} from "./components/BalanceSection.tsx";
-import {CreatedOffersSection} from "./components/CreatedOffersSection.tsx";
-import {WantedOffersSection} from "./components/WantedOffersSection.tsx";
+import {BalanceSection} from "./components/BalanceSection";
+import {CreatedOffersSection} from "./components/CreatedOffersSection";
+import {WantedOffersSection} from "./components/WantedOffersSection";
 
 export const HomePage = () => {
     const isLoggedIn  = useGetIsLoggedIn();

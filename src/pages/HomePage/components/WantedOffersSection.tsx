@@ -1,5 +1,5 @@
 import {useWantedOffers} from "hooks/queries/useWantedOffers";
-import {useConfirmTransaction} from "../../../hooks/transactions/useConfirmTransaction.ts";
+import {useConfirmTransaction} from "hooks/transactions/useConfirmTransaction";
 
 export const WantedOffersSection = () => {
     const {wantedOffers}  = useWantedOffers();
@@ -23,14 +23,16 @@ export const WantedOffersSection = () => {
                     {wantedOffers.map((offer) => (
                         <tr key={offer.offerId}>
                             <td>{offer.offerId}</td>
-                            <td>{`${offer.nftCollection}-${offer.nftNonce}`}</td>
                             <td>{`${offer.wantedNftCollection}-${offer.wantedNftNonce}`}</td>
-                            <td>{offer.wantedAddress}</td>
-                            <td><button onClick={() => onAcceptOffer({
-                                offerId: offer.offerId,
-                                collectionId: offer.nftCollection,
-                                nonce: offer.nftNonce,
-                            })}>Accept</button></td>
+                            <td>{`${offer.nftCollection}-${offer.nftNonce}`}</td>
+                            <td>{offer.creator}</td>
+                            <td><button onClick={() => {
+                                onAcceptOffer({
+                                    offerId: offer.offerId,
+                                    collectionId: offer.wantedNftCollection,
+                                    nonce: offer.wantedNftNonce,
+                                })
+                            }}>Accept</button></td>
                         </tr>
                     ))}
                     </tbody>
