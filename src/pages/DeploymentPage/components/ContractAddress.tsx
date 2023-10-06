@@ -1,7 +1,12 @@
 import {useGetDeployedContractAddress} from "../hooks/useGetDeployedContractAddress.ts";
+import {useEffect} from "react";
 
 export const ContractAddress = ({sessionId}: {sessionId: string}) => {
     const {contractAddress} = useGetDeployedContractAddress(sessionId)
+
+    useEffect(() => {
+        console.log('contractAddress', contractAddress);
+    }, [contractAddress])
 
     return (
         <div>

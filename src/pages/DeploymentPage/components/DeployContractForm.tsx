@@ -61,7 +61,13 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
                         </div>
                         <div>
                           <pre className='mt-2 pre-scrollable'>
-                            <code>{code?.toString()}</code>
+                            <code style={{
+                                display: "flow-root",
+                                width: "250px",
+                                whiteSpace: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis"
+                            }}>{code?.toString()}</code>
                           </pre>
                         </div>
                     </div>

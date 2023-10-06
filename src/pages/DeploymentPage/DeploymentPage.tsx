@@ -25,6 +25,7 @@ export const DeploymentPage = () => {
             args,
             gasLimit
         );
+        
         setSessionId(response.sessionId ?? '');
     };
 
