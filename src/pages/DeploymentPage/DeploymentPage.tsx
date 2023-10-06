@@ -1,5 +1,5 @@
 import { useLocalStorage } from "hooks/useLocalStorage";
-import {ContractAddress} from "./components/ContractAddress";
+import {ContractOrDeployerAddress} from "./components/ContractOrDeployerAddress.tsx";
 import {useDeployOrUpgrade} from "./hooks/useDeployOrUpgrade.ts";
 import {DeployContractForm} from "./components/DeployContractForm.tsx";
 import {DeployOrUpgradeParamsType} from "./types/deployOrUpgradeParams.ts";
@@ -25,14 +25,14 @@ export const DeploymentPage = () => {
             args,
             gasLimit
         );
-        
+
         setSessionId(response.sessionId ?? '');
     };
 
     return (
         <div>
             <DeployContractForm deployContractCallback={handleDeployOrUpgradeTransaction} />
-            <ContractAddress sessionId={sessionId} />
+            <ContractOrDeployerAddress sessionId={sessionId} />
         </div>
     )
 }

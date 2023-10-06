@@ -1,10 +1,9 @@
-// import {useState} from "react";
+import {useState} from "react";
 import useWasmCode from "../hooks/useWasmCode";
 import {DeployOrUpgradeParamsType} from "../types/deployOrUpgradeParams.ts";
 
-// TODO remove commented code in this file to enable upgrade contract functionality
 export const DeployContractForm = ({deployContractCallback}:{deployContractCallback: (params: DeployOrUpgradeParamsType) => void}) => {
-    // const [contractAddress, setContractAddress] = useState<string>();
+    const [contractAddress, setContractAddress] = useState<string>();
 
     const { code, onChange } = useWasmCode();
 
@@ -13,11 +12,11 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
             return;
         }
 
-        // const scAddress = method == 'deploy' ? undefined : contractAddress;
+        const scAddress = method == 'deploy' ? undefined : contractAddress;
 
         deployContractCallback({
             operation: method,
-            address: undefined,
+            address: scAddress,
             code,
             args: [],
             gasLimit: 60000000,
@@ -31,16 +30,16 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
 
                 <div className='card mb-2'>
                     <div className='card-body'>
-                        {/*<div className='form-group'>*/}
-                        {/*    <label>contract address (only for upgrade)</label>*/}
-                        {/*    <input*/}
-                        {/*        className='form-control'*/}
-                        {/*        type="text"*/}
-                        {/*        placeholder="contract address"*/}
-                        {/*        onChange={(event) => setContractAddress(event.target.value)}*/}
-                        {/*        value={contractAddress ?? ''}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
+                        <div className='form-group'>
+                            <label>contract address (only for upgrade)</label>
+                            <input
+                                className='form-control'
+                                type="text"
+                                placeholder="contract address to upgrade"
+                                onChange={(event) => setContractAddress(event.target.value)}
+                                value={contractAddress ?? ''}
+                            />
+                        </div>
 
 
                         <input type='file' name='file' onChange={onChange} />
@@ -52,12 +51,12 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
                             >
                                 Deploy
                             </button>
-                            {/*<button*/}
-                            {/*    className='btn btn-primary'*/}
-                            {/*    onClick={() => handleSubmit('upgrade')}*/}
-                            {/*>*/}
-                            {/*    Upgrade*/}
-                            {/*</button>*/}
+                            <button
+                                className='btn btn-primary'
+                                onClick={() => handleSubmit('upgrade')}
+                            >
+                                Upgrade
+                            </button>
                         </div>
                         <div>
                           <pre className='mt-2 pre-scrollable'>

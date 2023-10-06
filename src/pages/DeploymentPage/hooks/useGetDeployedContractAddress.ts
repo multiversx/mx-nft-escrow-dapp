@@ -8,7 +8,7 @@ import {
 } from "@multiversx/sdk-dapp/hooks";
 
 export const useGetDeployedContractAddress = (sessionId: string) => {
-    const [contractAddress, setContractAddress] = useState('');
+    const [contractOrDeployerAddress, setContractOrDeployerAddress] = useState('');
 
     const isLoggedIn = useGetIsLoggedIn();
     const {network} = useGetNetworkConfig();
@@ -31,8 +31,8 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
         const _hash = signedTransactions[sessionId]?.transactions[0]?.hash as string | undefined;
         if (_hash) {
             const foundContractAddress = await getContractAddress(_hash);
-            if (foundContractAddress && foundContractAddress !== contractAddress) {
-                setContractAddress(foundContractAddress);
+            if (foundContractAddress && foundContractAddress !== contractOrDeployerAddress) {
+                setContractOrDeployerAddress(foundContractAddress);
             }
         }
     };
@@ -48,6 +48,6 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
     // }, [sessionId, isLoggedIn, completedTransactions.successfulTransactions[sessionId]?.status]);
 
     return {
-        contractAddress
+        contractOrDeployerAddress
     }
 }

@@ -1,12 +1,12 @@
 import {useGetDeployedContractAddress} from "../hooks/useGetDeployedContractAddress.ts";
 import {useEffect} from "react";
 
-export const ContractAddress = ({sessionId}: {sessionId: string}) => {
-    const {contractAddress} = useGetDeployedContractAddress(sessionId)
+export const ContractOrDeployerAddress = ({sessionId}: {sessionId: string}) => {
+    const {contractOrDeployerAddress} = useGetDeployedContractAddress(sessionId)
 
     useEffect(() => {
-        console.log('contractAddress', contractAddress);
-    }, [contractAddress])
+        console.log('contractOrDeployerAddress', contractOrDeployerAddress);
+    }, [contractOrDeployerAddress])
 
     return (
         <div>
@@ -15,8 +15,8 @@ export const ContractAddress = ({sessionId}: {sessionId: string}) => {
                     <div className="card">
                         <div className="card-body">
                             <p className='m-0'>
-                                <b>Contract Address: </b>
-                                <span>{contractAddress ?? '-'}</span>
+                                <b>Contract Or Deployer Address: </b>
+                                <span>{contractOrDeployerAddress ?? '-'}</span>
                             </p>
                         </div>
                     </div>
