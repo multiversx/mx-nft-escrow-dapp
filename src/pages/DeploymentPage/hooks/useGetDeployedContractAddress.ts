@@ -3,8 +3,9 @@ import {useEffect, useState} from "react";
 import { Address } from '@multiversx/sdk-core/out';
 import {
     useGetIsLoggedIn,
-    useGetNetworkConfig, useGetSignedTransactions,
-    // useGetSuccessfulTransactions
+    useGetNetworkConfig,
+    // useGetSignedTransactions,
+    useGetSuccessfulTransactions
 } from "@multiversx/sdk-dapp/hooks";
 
 export const useGetDeployedContractAddress = (sessionId: string) => {
@@ -12,8 +13,8 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
 
     const isLoggedIn = useGetIsLoggedIn();
     const {network} = useGetNetworkConfig();
-    // const completedTransactions = useGetSuccessfulTransactions();
-    const { signedTransactions } = useGetSignedTransactions();
+    const completedTransactions = useGetSuccessfulTransactions();
+    // const { signedTransactions } = useGetSignedTransactions();
 
     const getContractAddress = async (address: string): Promise<string> => {
         try {
@@ -28,7 +29,8 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
     };
 
     const fetchContractAddressAfterDeploy = async (sessionId: string) => {
-        const _hash = signedTransactions[sessionId]?.transactions[0]?.hash as string | undefined;
+        // const _hash = signedTransactions[sessionId]?.transactions[0]?.hash as string | undefined;
+        const _hash = completedTransactions.successfulTransactions[sessionId]?.transactions[0]?.hash as string | undefined;
         if (_hash) {
             const foundContractAddress = await getContractAddress(_hash);
             if (foundContractAddress && foundContractAddress !== contractOrDeployerAddress) {
@@ -44,8 +46,8 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
         }
 
         fetchContractAddressAfterDeploy(sessionId);
-    }, [sessionId, isLoggedIn, signedTransactions[sessionId]?.status]);
-    // }, [sessionId, isLoggedIn, completedTransactions.successfulTransactions[sessionId]?.status]);
+    // }, [sessionId, isLoggedIn, signedTransactions[sessionId]?.status]);
+    }, [sessionId, isLoggedIn, completedTransactions.successfulTransactions[sessionId]?.status]);
 
     return {
         contractOrDeployerAddress
