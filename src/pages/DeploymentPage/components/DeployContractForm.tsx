@@ -64,15 +64,15 @@ export const DeployContractForm = ({
                     </button>
                 </div>
                 <div>
-                  <pre>
-                    <code style={{
-                        display: "flow-root",
-                        width: "250px",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis"
-                    }}>{wasmCode?.toString()}</code>
-                  </pre>
+                    <textarea
+                        style={{
+                            display: "flex",
+                            width: "100%",
+                            height: "360px",
+                            marginTop: "1rem",
+                        }}
+                        value={wasmCode?.toString()}
+                    />
                 </div>
             </div>
         </div>
