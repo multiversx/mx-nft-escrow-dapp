@@ -9,8 +9,8 @@ export const ContractOrDeployerAddress = ({sessionId}: {sessionId: string}) => {
     }, [contractOrDeployerAddress])
 
     return (
-        <div>
-            <p><b>Contract Or Deployer Address: </b></p>
+        <div style={{display: "flex", marginTop: "5rem"}}>
+            <span><b>Contract Or Deployer Address: </b></span>
             <span>{contractOrDeployerAddress ?? '-'}</span>
         </div>
     )

@@ -28,8 +28,10 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
             <h2>Deploy NFT Escrow Contract</h2>
 
             <div>
-                <div>
-                    <label>contract address (only for upgrade)</label>
+                <input type='file' name='file' onChange={onChange} />
+
+                <div style={{display: "flex", justifyContent: "start", flexDirection: "column"}}>
+                    <label style={{display: "flex"}}>contract address (only for upgrade)</label>
                     <input
                         type="text"
                         placeholder="contract address to upgrade"
@@ -38,10 +40,7 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
                     />
                 </div>
 
-
-                <input type='file' name='file' onChange={onChange} />
-
-                <div>
+                <div style={{display: "flex", justifyContent: "center", gap: "3rem"}}>
                     <button
                         onClick={() => handleSubmit('deploy')}
                     >
