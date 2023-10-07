@@ -1,14 +1,14 @@
 import {useState} from "react";
-import useWasmCode from "../hooks/useWasmCode";
+import useUploadWasmCode from "../hooks/useUploadWasmCode.tsx";
 import {DeployOrUpgradeParamsType} from "../types/deployOrUpgradeParams.ts";
 
 export const DeployContractForm = ({deployContractCallback}:{deployContractCallback: (params: DeployOrUpgradeParamsType) => void}) => {
     const [contractAddress, setContractAddress] = useState<string>();
 
-    const { code, onChange } = useWasmCode();
+    const { wasm, onUpload } = useUploadWasmCode();
 
     const handleSubmit = async (method: 'deploy' | 'upgrade') => {
-        if (!code) {
+        if (!wasm) {
             return;
         }
 
@@ -17,7 +17,7 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
         deployContractCallback({
             operation: method,
             address: scAddress,
-            code,
+            code: wasm,
             args: [],
             gasLimit: 60000000,
         });
@@ -28,7 +28,7 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
             <h2>Deploy NFT Escrow Contract</h2>
 
             <div>
-                <input type='file' name='file' onChange={onChange} />
+                <input type='file' name='file' onChange={onUpload} />
 
                 <div style={{display: "flex", justifyContent: "start", flexDirection: "column"}}>
                     <label style={{display: "flex"}}>contract address (only for upgrade)</label>
@@ -60,7 +60,7 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
                         whiteSpace: "nowrap",
                         overflow: "hidden",
                         textOverflow: "ellipsis"
-                    }}>{code?.toString()}</code>
+                    }}>{wasm?.toString()}</code>
                   </pre>
                 </div>
             </div>

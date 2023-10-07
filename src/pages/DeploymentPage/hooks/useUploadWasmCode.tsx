@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Code } from '@multiversx/sdk-core/out/smartcontracts/code';
 
-const useWasmCode = () => {
+const useUploadWasmCode = () => {
   const [code, setCode] = useState<Code>();
 
   const changeHandler = (e: any) => {
@@ -23,7 +23,7 @@ const useWasmCode = () => {
     reader.readAsArrayBuffer(e.target.files[0]);
   };
 
-  return { code, onChange: changeHandler };
+  return { wasm: code, onUpload: changeHandler };
 };
 
-export default useWasmCode;
+export default useUploadWasmCode;
