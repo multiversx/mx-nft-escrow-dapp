@@ -1,9 +1,12 @@
 import type { Code } from "@multiversx/sdk-core"
 
 export type DeployOrUpgradeParamsType = {
-    operation: 'deploy' | 'upgrade';
-    address: string | undefined;
+    address?: string;
     code: Code;
     args: any[];
     gasLimit: number;
+    upgradeable?: boolean,
+    readable?: boolean,
+    payable?: boolean,
+    payableBySc?: boolean
 }

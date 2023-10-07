@@ -2,28 +2,33 @@ import { useState } from 'react';
 import { Code } from '@multiversx/sdk-core/out/smartcontracts/code';
 
 const useUploadWasmCode = () => {
-  const [code, setCode] = useState<Code>();
+  const [wasmCode, setWasmCode] = useState<Code>();
 
-  const changeHandler = (e: any) => {
+  const toBuffer = (arrayBuffer: ArrayBuffer) => {
+    const buffer = Buffer.alloc(arrayBuffer.byteLength);
+    const view = new Uint8Array(arrayBuffer);
+
+    for (let i = 0; i < buffer.length; ++i) {
+      buffer[i] = view[i];
+    }
+
+    return buffer;
+  };
+
+  const uploadHandler = (e: any) => {
     const reader = new FileReader();
-    reader.onload = () => {
-      const toBuffer = (ab: any) => {
-        const buf = Buffer.alloc(ab.byteLength);
-        const view = new Uint8Array(ab);
-        for (let i = 0; i < buf.length; ++i) {
-          buf[i] = view[i];
-        }
-        return buf;
-      };
 
-      const buffer = toBuffer(reader.result);
-      const _code = Code.fromBuffer(buffer);
-      setCode(_code);
+    reader.onload = () => {
+      const buffer = toBuffer(reader.result as ArrayBuffer);
+      const wasmCode = Code.fromBuffer(buffer);
+
+      setWasmCode(wasmCode);
     };
+
     reader.readAsArrayBuffer(e.target.files[0]);
   };
 
-  return { wasm: code, onUpload: changeHandler };
+  return { wasmCode, onUpload: uploadHandler };
 };
 
 export default useUploadWasmCode;

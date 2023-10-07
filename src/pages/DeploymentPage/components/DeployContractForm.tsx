@@ -2,25 +2,36 @@ import {useState} from "react";
 import useUploadWasmCode from "../hooks/useUploadWasmCode.tsx";
 import {DeployOrUpgradeParamsType} from "../types/deployOrUpgradeParams.ts";
 
-export const DeployContractForm = ({deployContractCallback}:{deployContractCallback: (params: DeployOrUpgradeParamsType) => void}) => {
+export const DeployContractForm = ({
+    deployContractCallback,
+    upgradeContractCallback
+}:{
+    deployContractCallback: (params: DeployOrUpgradeParamsType) => void;
+    upgradeContractCallback: (params: DeployOrUpgradeParamsType) => void;
+}) => {
     const [contractAddress, setContractAddress] = useState<string>();
 
-    const { wasm, onUpload } = useUploadWasmCode();
+    const { wasmCode, onUpload } = useUploadWasmCode();
 
     const handleSubmit = async (method: 'deploy' | 'upgrade') => {
-        if (!wasm) {
+        if (!wasmCode) {
             return;
         }
 
-        const scAddress = method == 'deploy' ? undefined : contractAddress;
-
-        deployContractCallback({
-            operation: method,
-            address: scAddress,
-            code: wasm,
+        const params: DeployOrUpgradeParamsType = {
+            code: wasmCode,
             args: [],
             gasLimit: 60000000,
-        });
+        }
+
+        if (method == 'deploy') {
+            deployContractCallback(params);
+        } else {
+            upgradeContractCallback({
+                ...params,
+                address: contractAddress,
+            });
+        }
     };
 
     return (
@@ -60,7 +71,7 @@ export const DeployContractForm = ({deployContractCallback}:{deployContractCallb
                         whiteSpace: "nowrap",
                         overflow: "hidden",
                         textOverflow: "ellipsis"
-                    }}>{wasm?.toString()}</code>
+                    }}>{wasmCode?.toString()}</code>
                   </pre>
                 </div>
             </div>

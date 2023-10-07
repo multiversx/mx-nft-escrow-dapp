@@ -4,7 +4,6 @@ import { Address } from '@multiversx/sdk-core/out';
 import {
     useGetIsLoggedIn,
     useGetNetworkConfig,
-    // useGetSignedTransactions,
     useGetSuccessfulTransactions
 } from "@multiversx/sdk-dapp/hooks";
 
@@ -14,9 +13,8 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
     const isLoggedIn = useGetIsLoggedIn();
     const {network} = useGetNetworkConfig();
     const completedTransactions = useGetSuccessfulTransactions();
-    // const { signedTransactions } = useGetSignedTransactions();
 
-    const getContractAddress = async (address: string): Promise<string> => {
+    const fetchContractAddress = async (address: string) => {
         try {
             const { data } = await axios.get(`${network.apiAddress}/transactions/${address}`);
             const rawTopic = data?.logs?.events[0]?.topics[0];
@@ -24,15 +22,14 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
             return Address.fromHex(rawAddress).bech32();
         } catch(err) {
             console.error(err);
-            return '-';
         }
     };
 
-    const fetchContractAddressAfterDeploy = async (sessionId: string) => {
-        // const _hash = signedTransactions[sessionId]?.transactions[0]?.hash as string | undefined;
-        const _hash = completedTransactions.successfulTransactions[sessionId]?.transactions[0]?.hash as string | undefined;
-        if (_hash) {
-            const foundContractAddress = await getContractAddress(_hash);
+    const getContractAddressAfterDeploy = async (sessionId: string) => {
+        const currentTransactionHash = completedTransactions.successfulTransactions[sessionId]?.transactions[0]?.hash;
+        if (currentTransactionHash) {
+            const foundContractAddress = await fetchContractAddress(currentTransactionHash);
+            
             if (foundContractAddress && foundContractAddress !== contractOrDeployerAddress) {
                 setContractOrDeployerAddress(foundContractAddress);
             }
@@ -45,8 +42,7 @@ export const useGetDeployedContractAddress = (sessionId: string) => {
             return;
         }
 
-        fetchContractAddressAfterDeploy(sessionId);
-    // }, [sessionId, isLoggedIn, signedTransactions[sessionId]?.status]);
+        getContractAddressAfterDeploy(sessionId);
     }, [sessionId, isLoggedIn, completedTransactions.successfulTransactions[sessionId]?.status]);
 
     return {
