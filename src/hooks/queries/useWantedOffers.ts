@@ -21,7 +21,7 @@ export const useWantedOffers = () => {
         const response = await networkProvider.queryContract(query);
         const { firstValue: offersPairs } = new ResultsParser().parseQueryResponse(response, interaction.getEndpoint());
 
-        if(offersPairs && offersPairs.valueOf().length > 0) {
+        if(offersPairs) {
             const offers = offersPairs.valueOf().map((offerPair: [BigNumber, OfferResponseType]) => {
                 return {
                     offerId: offerPair[0].toNumber(),
@@ -34,12 +34,12 @@ export const useWantedOffers = () => {
                 } as OfferType
             });
 
-            setWantedOffers(offers);
+            setWantedOffers([...offers]);
         }
 
         console.log(offersPairs);
         return offersPairs;
-    }, []);
+    }, [account.address]);
 
     useEffect(() => {
         getWantedOffers();
