@@ -21,7 +21,7 @@ export const useWantedOffers = () => {
         const response = await networkProvider.queryContract(query);
         const { firstValue: offersPairs } = new ResultsParser().parseQueryResponse(response, interaction.getEndpoint());
 
-        if(offersPairs) {
+        if(offersPairs && offersPairs.valueOf().length > 0) {
             const offers = offersPairs.valueOf().map((offerPair: [BigNumber, OfferResponseType]) => {
                 return {
                     offerId: offerPair[0].toNumber(),

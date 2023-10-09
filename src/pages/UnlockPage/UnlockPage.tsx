@@ -10,9 +10,9 @@ export const UnlockPage = () => {
     const navigate = useNavigate();
 
     return (
-        <div>
+        <div className="flex flex-col items-center pt-20 h-screen">
             <h2>Login with:</h2>
-            <div>
+            <div className="flex flex-wrap">
                 <ExtensionLoginButton
                     loginButtonText="DeFi Wallet"
                     callbackRoute="/"

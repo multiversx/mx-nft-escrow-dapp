@@ -23,7 +23,7 @@ export const DeploymentPage = () => {
     };
 
     return (
-        <div>
+        <div className="h-screen">
             <DeployContractForm deployContractCallback={handleDeployTransaction} upgradeContractCallback={handleUpgradeTransaction} />
             <ContractOrDeployerAddress sessionId={sessionId} />
         </div>

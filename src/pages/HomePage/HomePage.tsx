@@ -8,20 +8,15 @@ export const HomePage = () => {
 
     return (
         isLoggedIn ? (
-            <div>
+            <div className="h-screen bg-neutral-100 text-3xl font-bold text-center flex flex-col items-center py-4">
                 <h2>Dashboard</h2>
                 <BalanceSection />
                 <CreatedOffersSection />
                 <WantedOffersSection />
             </div>
         ) : (
-            <div style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "50vh"
-            }} >
-                Please connect to your wallet
+            <div className="h-screen bg-neutral-100 text-3xl font-bold text-center flex justify-center items-center">
+                Please connect your wallet
             </div>
         )
     )

@@ -29,11 +29,7 @@ function App() {
                 <SignTransactionsModals />
 
                 <NavBar />
-                <div style={{
-                    width: "100%",
-                    minWidth: "100%",
-                    padding: "2rem"
-                }}>
+                <div className="bg-neutral-100">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/unlock" element={<UnlockPage />} />

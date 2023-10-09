@@ -6,6 +6,6 @@ export const BalanceSection = () => {
     const {account}  = useGetAccountInfo();
 
     return (
-        <div> Your balance: <FormatAmount value={account.balance} egldLabel={network.egldLabel} /> </div>
+        <div className="text-2xl"> Your balance: <FormatAmount value={account.balance} egldLabel={network.egldLabel} /> </div>
     )
 }
