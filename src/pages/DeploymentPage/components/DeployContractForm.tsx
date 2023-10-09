@@ -38,7 +38,7 @@ export const DeployContractForm = ({
         <div className="w-full flex flex-col text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8">
             <h2 className="flex justify-center text-2xl">Deploy NFT Escrow Contract</h2>
 
-            <div className="pt-32 px-16">
+            <div className="pt-8 px-16">
                 <div>
                     <label className="text-left block mb-2 text-sm font-medium text-neutral-700" htmlFor="file_input">Upload .wasm file</label>
                     <input
