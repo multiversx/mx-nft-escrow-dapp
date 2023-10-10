@@ -11,6 +11,7 @@ export const DeployContractForm = ({
     upgradeContractCallback: (params: DeployOrUpgradeParamsType) => void;
     setAddressLabel: (text: string) => void;
 }) => {
+    // There is no validation for the contract address format, except for the empty state, so feel free to add it
     const [contractAddress, setContractAddress] = useState<string>();
     const [enableUpgrade, setEnableUpgrade] = useState<boolean>(false);
 
