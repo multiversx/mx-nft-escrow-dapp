@@ -37,7 +37,6 @@ export const useWantedOffers = () => {
             setWantedOffers([...offers]);
         }
 
-        console.log(offersPairs);
         return offersPairs;
     }, [account.address]);
 

@@ -38,8 +38,6 @@ export const useCreateOfferForm = () => {
 
     const onSubmit = useCallback(
         async (values: CreateOfferValuesType) => {
-            console.log(values);
-
             const tx = getCreateOfferTransaction({
                 collectionId: values.collectionId,
                 nonce: values.collectionNonce,

@@ -36,7 +36,6 @@ export const useCreatedOffers = () => {
             setCreatedOffers([...offers]);
         }
 
-        console.log(offersPairs);
         return offersPairs;
     }, [account.address]);
 
