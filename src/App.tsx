@@ -1,4 +1,3 @@
-import './App.css'
 import {DappProvider} from "@multiversx/sdk-dapp/wrappers";
 import {
     NotificationModal,
