@@ -11,7 +11,7 @@ export const CreateOfferPage = () => {
         if(!isLoggedIn) {
             navigate("/unlock");
         }
-    });
+    }, [isLoggedIn, navigate]);
 
     return (
         <div className="pt-32 px-32">
