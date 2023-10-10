@@ -43,7 +43,7 @@ export const CreateOfferForm = () => {
             <h5 className="font-bold text-xl mb-2 mt-16">Wanted NFT:</h5>
 
             <div className="mb-6">
-                <label htmlFor="collectionId" className="block text-left mb-2 text-sm font-medium text-gray-900">NFT Collection</label>
+                <label htmlFor="wantedCollectionId" className="block text-left mb-2 text-sm font-medium text-gray-900">NFT Collection</label>
                 <Field
                     type="text"
                     placeholder="Wanted NFT collection"
@@ -57,7 +57,7 @@ export const CreateOfferForm = () => {
                 />
             </div>
             <div className="mb-6">
-                <label htmlFor="collectionNonce" className="block text-left mb-2 text-sm font-medium text-gray-900">NFT Nonce</label>
+                <label htmlFor="wantedCollectionNonce" className="block text-left mb-2 text-sm font-medium text-gray-900">NFT Nonce</label>
                 <Field
                     type="number"
                     placeholder="Wanted NFT nonce"
@@ -71,7 +71,7 @@ export const CreateOfferForm = () => {
                 />
             </div>
             <div className="mb-6">
-                <label htmlFor="collectionNonce" className="block text-left mb-2 text-sm font-medium text-gray-900">NFT address</label>
+                <label htmlFor="wantedAddress" className="block text-left mb-2 text-sm font-medium text-gray-900">NFT address</label>
                 <Field
                     type="text"
                     placeholder="Wanted address"
